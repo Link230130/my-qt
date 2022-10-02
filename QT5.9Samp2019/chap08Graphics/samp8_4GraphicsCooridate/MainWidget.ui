@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWidgetClass</class>
+ <widget class="QWidget" name="MainWidgetClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>927</width>
+    <height>591</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWidget</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,4,1">
+   <item>
+    <widget class="QGroupBox" name="topGroup">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="viewSize">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="sceneRect">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWGraphicsView" name="graphicsView"/>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="bottomGroup">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="viewCooridate">
+        <property name="text">
+         <string>View 坐标：</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="sceneCooridate">
+        <property name="text">
+         <string>Scene 坐标：</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="itemCooridate">
+        <property name="text">
+         <string>Item 坐标：</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QWGraphicsView</class>
+   <extends>QGraphicsView</extends>
+   <header>QWGraphicsView.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="MainWidget.qrc"/>
+ </resources>
+ <connections/>
+</ui>
