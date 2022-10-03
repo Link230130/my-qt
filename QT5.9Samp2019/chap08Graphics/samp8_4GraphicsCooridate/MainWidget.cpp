@@ -11,7 +11,6 @@ MainWidget::MainWidget(QWidget *parent)
     ui.graphicsView->setDragMode(QGraphicsView::RubberBandDrag);
     connect(ui.graphicsView, SIGNAL(mouseMovePoint(QPoint)),
         this, SLOT(on_mouseMovePoint(QPoint)));
-    connect(ui.graphicsView, SIGNAL(mouseMovePoint(QPoint)), this, SLOT(on_mouseMovePoint(QPoint)));
     connect(ui.graphicsView, SIGNAL(mouseClicked(QPoint)),
         this, SLOT(on_mouseClicked(QPoint)));
     iniGraphicsSystem();
