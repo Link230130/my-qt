@@ -35,8 +35,10 @@ protected:
     void scaleView(qreal scaleFactor);
 
 private:
-    int         timerId;
-    Node        *centerNode;
+    void iniUI();
 
+    int                 timerId;
+    Node                *centerNode;
+    QGraphicsScene      *m_scene;
 };
 #endif // !GRAPWIDGET_H

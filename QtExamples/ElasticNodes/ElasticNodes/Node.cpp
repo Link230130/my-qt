@@ -139,7 +139,7 @@ void Node::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QW
 
 QVariant Node::itemChange(GraphicsItemChange change, const QVariant & value)
 {
-    qDebug() << "Node::itemChange====";
+    //qDebug() << "Node::itemChange====";
     switch (change)
     {
     case ItemPositionHasChanged:
