@@ -17,10 +17,12 @@ GeneratedFiles/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-x64/
-x86/
+x64/*
+x86/*
 bld/
-[Bb]in/
+*/[Bb]in/*
+*/[Ll]ib/*
+*/[Ii]nclude/*
 [Oo]bj/
 [Ll]og/
 
