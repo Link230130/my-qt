@@ -68,9 +68,6 @@
     </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="VideoDecode.h">
       <Filter>Header Files</Filter>
     </ClInclude>

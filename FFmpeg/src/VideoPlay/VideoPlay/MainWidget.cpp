@@ -15,7 +15,7 @@
 #include <QFileDialog>
 #include <QDebug>
 
-MainWidget::MainWidget(QWidget *parent)
+MainWidget::MainWidget(QWidget* parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
@@ -23,15 +23,7 @@ MainWidget::MainWidget(QWidget *parent)
 
     m_readThread = new ReadThread();
     connect(m_readThread, &ReadThread::updateImage, ui.playImage, &PlayImage::updateImage, Qt::DirectConnection);
-    connect(m_readThread, &ReadThread::updateImage, ui.playImage_1, &PlayImage::updateImage, Qt::DirectConnection);
-    /*connect(m_readThread, &ReadThread::updateImage, ui.playImage_2, &PlayImage::updateImage, Qt::DirectConnection);
-    connect(m_readThread, &ReadThread::updateImage, ui.playImage_3, &PlayImage::updateImage, Qt::DirectConnection);
-    connect(m_readThread, &ReadThread::updateImage, ui.playImage_4, &PlayImage::updateImage, Qt::DirectConnection);
-    connect(m_readThread, &ReadThread::updateImage, ui.playImage_5, &PlayImage::updateImage, Qt::DirectConnection);
-    connect(m_readThread, &ReadThread::updateImage, ui.playImage_6, &PlayImage::updateImage, Qt::DirectConnection);
-    connect(m_readThread, &ReadThread::updateImage, ui.playImage_7, &PlayImage::updateImage, Qt::DirectConnection);
-    connect(m_readThread, &ReadThread::updateImage, ui.playImage_8, &PlayImage::updateImage, Qt::DirectConnection);*/
-    
+
     connect(m_readThread, &ReadThread::playState, this, &MainWidget::on_playState);
     ui.url->setText("C:/Users/tian.ji/Desktop/序列 01.mp4");
 }
