@@ -57,6 +57,12 @@ void Widget::mouseMoveEvent(QMouseEvent *event)
 {
     if(mousePressIndex >= 0 && mousePressIndex < 4)
     {
+        //边界处理
+        if(event->pos().x() < 10 || event->pos().x() > width() - 10
+                || event->pos().y() < 10 || event->pos().y() > height()-10)
+        {
+            return;
+        }
         points[mousePressIndex] = event->pos();
         update();
     }
@@ -101,7 +107,7 @@ bool Widget::checkMousePress(const QPoint &p)
 {
     for (int i = 0; i < points.size(); ++i) {
         //距离小于10代表点中,记录下点击的点
-        if(distance(mousePressPos,points.at(i)) < 10.0)
+        if(distance(p,points.at(i)) < 10.0)
         {
             mousePressIndex = i;
             return true;
