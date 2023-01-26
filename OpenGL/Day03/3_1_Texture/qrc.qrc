@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/Shaders/shapes.frag</file>
+        <file>Resources/Shaders/shapes.vert</file>
+        <file>Resources/Images/wall.jpg</file>
+    </qresource>
+</RCC>
