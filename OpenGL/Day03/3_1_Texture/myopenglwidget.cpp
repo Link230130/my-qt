@@ -89,21 +89,25 @@ void MyOpenGLWidget::initializeGL()
     glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,8*sizeof (float),(void*)(sizeof(float)*6));
     glEnableVertexAttribArray(2);
 
-    //解绑EBO需要在VAO解绑前执行，否则VAO无法正常记录，也就未达到解绑的目的。VBO则没有这一条限制
-    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
-
-    //使用QOpenGLTexture进行纹理贴图
-    //由于Qt的坐标系和OpenGL的坐标Y轴相反，因此需要镜像翻转一下
-    qTexture = new QOpenGLTexture(QImage(":/Resources/Images/wall.jpg").mirrored());
-
-    //解绑VAO、VBO
-    glBindVertexArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER,0);
-
     //采用QOpenGLShaderProgram进行着色器编译和链接
     qShaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex,":/Resources/Shaders/shapes.vert");
     qShaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment,":/Resources/Shaders/shapes.frag");
     qShaderProgram.link();
+
+    //使用QOpenGLTexture进行纹理贴图
+    //由于Qt的坐标系和OpenGL的坐标Y轴相反，因此需要镜像翻转一下
+    qTextureWall = new QOpenGLTexture(QImage(":/Resources/Images/wall.jpg").mirrored());
+    qTextureContainer = new QOpenGLTexture(QImage(":/Resources/Images/container.jpg").mirrored());
+
+    qShaderProgram.bind();
+    qShaderProgram.setUniformValue("textureWall",0);
+    qShaderProgram.setUniformValue("textureContainer",1);
+
+    //解绑EBO需要在VAO解绑前执行，否则VAO无法正常记录，也就未达到解绑的目的。VBO则没有这一条限制
+    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
+    //解绑VAO、VBO
+    glBindVertexArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER,0);
 }
 
 void MyOpenGLWidget::paintGL()
@@ -120,7 +124,10 @@ void MyOpenGLWidget::paintGL()
     //利用EBO进行绘制
     switch (m_shape) {
     case Shape::Rect:
-        qTexture->bind(0);
+        //绑定第1个纹理单元
+        qTextureWall->bind(0);
+        //绑定第2个纹理单元
+        qTextureContainer->bind(1);
         glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
         break;
     case Shape::Triangle:

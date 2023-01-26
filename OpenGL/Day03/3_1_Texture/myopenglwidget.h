@@ -32,7 +32,8 @@ private:
 
     Shape m_shape;
     QOpenGLShaderProgram qShaderProgram;
-    QOpenGLTexture *qTexture;
+    QOpenGLTexture *qTextureWall;
+    QOpenGLTexture *qTextureContainer;
 signals:
 
 public slots:

@@ -3,5 +3,6 @@
         <file>Resources/Shaders/shapes.frag</file>
         <file>Resources/Shaders/shapes.vert</file>
         <file>Resources/Images/wall.jpg</file>
+        <file>Resources/Images/container.jpg</file>
     </qresource>
 </RCC>
