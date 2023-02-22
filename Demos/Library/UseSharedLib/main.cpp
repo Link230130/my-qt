@@ -2,6 +2,10 @@
 
 #include <QApplication>
 
+/*
+ * 使用QLibrary加载动态库的Demo
+*/
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
