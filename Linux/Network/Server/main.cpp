@@ -2,6 +2,7 @@
 #include "unistd.h"
 #include "arpa/inet.h"
 #include <string>
+#include "pthread.h"
 
 using namespace std;
 
@@ -43,15 +44,30 @@ int main() {
     //4.阻塞并等待客户端的连接
     struct sockaddr_in caddr;
     int addrLen = sizeof(caddr);
-    int cfd = accept(fd, (struct sockaddr*)&caddr, (socklen_t*)&addrLen);
-    if (cfd == -1)
-    {
-        cout << "accept error" << endl;
-        return -1;
-    }
+
+    while (1) {
+        int cfd = accept(fd, (struct sockaddr*)&caddr, (socklen_t*)&addrLen);
+        if (cfd == -1)
+        {
+            cout << "accept error and continue" << endl;
+            continue;
+        }
 #if IS_DEBUG
-    cout << "accept succeed!!! and cfd=" << cfd << endl;
+        cout << "accept succeed!!! and cfd=" << cfd << endl;
 #endif
+
+        //创建子线程进行处理
+        pthread_t tid;
+        pthread_create(&tid, NULL, working, NULL);
+        //分离子线程
+        pthread_detach(tid);
+    }
+    close(fd);
+}
+
+//负责与客户端进行通信
+void* working(void* arg) {
+
     //连接建立成功，打印客户端的IP和Port信息
     char ip[32];
     cout << "The client IP: " << inet_ntop(AF_INET, &caddr.sin_addr.s_addr, ip, sizeof(ip)) << endl;

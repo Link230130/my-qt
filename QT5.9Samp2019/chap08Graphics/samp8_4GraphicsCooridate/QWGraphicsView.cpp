@@ -1,31 +1,25 @@
-#include "QWGraphicsView.h"
-#include <QMouseEvent>
+﻿#include "qwgraphicsview.h"
+#include    <QMouseEvent>
+#include    <QPoint>
 
-QWGraphicsView::QWGraphicsView(QWidget *parent)
-    : QGraphicsView(parent)
-{
-}
-
-QWGraphicsView::~QWGraphicsView()
-{
-}
-
-void QWGraphicsView::mouseMoveEvent(QMouseEvent * event)
-{
-    //QGraphicsView的坐标
-    QPoint point = event->pos();
-    emit mouseMovePoint(point);
+void QWGraphicsView::mouseMoveEvent(QMouseEvent *event)
+{//鼠标移动事件
+    QPoint point=event->pos(); //QGraphicsView的坐标
+    emit mouseMovePoint(point); //释放信号
     QGraphicsView::mouseMoveEvent(event);
 }
 
-void QWGraphicsView::mousePressEvent(QMouseEvent * event)
-{
-    //鼠标按下左键
-    if (event->button() == Qt::LeftButton)
+void QWGraphicsView::mousePressEvent(QMouseEvent *event)
+{ //鼠标左键按下事件
+    if (event->button()==Qt::LeftButton)
     {
-        //QGraphicsView坐标
-        QPoint point = event->pos();
-        emit mouseClicked(point);
+        QPoint point=event->pos(); //QGraphicsView的坐标
+        emit mouseClicked(point);//释放信号
     }
     QGraphicsView::mousePressEvent(event);
+}
+
+QWGraphicsView::QWGraphicsView(QWidget *parent):QGraphicsView(parent)
+{
+
 }

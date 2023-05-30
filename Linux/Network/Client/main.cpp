@@ -17,7 +17,7 @@ int main()
     //2.连接服务器
     sockaddr_in saddr;
     saddr.sin_family = AF_INET;
-    saddr.sin_port = htons(9999);
+    saddr.sin_port = htons(9999); 
     inet_pton(AF_INET, "127.0.0.1", &saddr.sin_addr.s_addr);
     int ret = connect(fd, (sockaddr*)&saddr, sizeof(saddr));
     if (ret == -1) {
